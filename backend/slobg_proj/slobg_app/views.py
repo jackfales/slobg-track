@@ -179,16 +179,21 @@ def history(request):
       records = VolunteerRecord.objects.all()
    else:
       records = VolunteerRecord.objects.filter(owner = current_user)
+   if records.count() > 10:
+      records = records[records.count() - 10:]
+   records = list(records)
+   records.reverse()
    return render(request, "history.html", {"records" : records})
 
 
 @login_required
 def profile(request):
    current_user = request.user
+   profile_form = ProfileForm(instance=request.user.profile)
    hours = VolunteerRecord.objects.filter(
       owner = current_user).all().aggregate(
          total_hours=Sum('hours'))['total_hours'] or 0
-   return render(request, "profile.html", {'hours' : hours, 'user': current_user})
+   return render(request, "profile.html", {'hours' : hours, 'user': current_user, 'profile_form': profile_form})
 
 @login_required
 def update_profile(request):

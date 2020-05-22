@@ -5,6 +5,15 @@ body {
     position: relative;
     padding-bottom: 3em;
     min-height: 100vh;
+    height: 80%;
+    background-position: center;
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+    background-image: url("../img/slobg_drone.jpg");
+}
+
+.white {
+    color: white !important;
 }
 
 .main-text{
@@ -29,6 +38,7 @@ body {
         padding-bottom: 15px;
         margin-bottom: 15px;
         margin-top: 25px;
+        background-color: #FFF;
     }
 }
 
@@ -42,6 +52,7 @@ body {
         padding-bottom: 15px;
         margin-bottom: 15px;
         margin-top: 25px;
+        background-color: #FFF;
     }
 }
 /* for small screens*/
@@ -49,12 +60,12 @@ body {
     .center-page {
         margin: auto;
         width: 80%;
-        height: 80%;
         border: 3px solid #637039;
         padding-top: 15px;
         padding-bottom: 15px;
         margin-bottom: 15px;
         margin-top: 25px;
+        background-color: #FFF;
     }
 }
 
@@ -147,6 +158,7 @@ footer {
     bottom: 0;
     width: 100%;
     height: 3em; 
+    color: #FFF;
 }
 
 .main-footer {

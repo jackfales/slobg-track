@@ -8,13 +8,16 @@ from django.core.exceptions import ObjectDoesNotExist
 ACTIVITY_CHOICES = (('Maintenance', 'Maintenance'), 
 					('Administration', 'Administration'), 
 					('Outreach', 'Outreach'), 
-					('Education', 'Education'))
+					('Education', 'Education'),
+					('Propagation', 'Propagation'),
+					('Other', 'Other'))
 
 class VolunteerRecord(models.Model):
 	activity = models.CharField(max_length=256, blank=False, choices=ACTIVITY_CHOICES)
 	hours = models.FloatField(blank=False)
 	date = models.DateField(auto_now=False, auto_now_add=False, blank=False)
 	supervisor = models.CharField(max_length=256, blank=False)
+	description = models.CharField(max_length=1000, blank=True, default='')
 	owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
 
 	def __str__(self):
@@ -46,6 +49,7 @@ class Profile(models.Model):
 	medical_conditions = models.TextField(max_length=512, blank=True,
 		help_text="Please enter any medical conditions you may have. Write N/A if none.")
 	areas_of_interest = models.ManyToManyField(ActivityChoice)
+	photo_permission = models.BooleanField(blank=True, default=True)
 	volunteer_waiver_and_release = models.CharField(max_length=50, blank=True, 
 		help_text="""San Luis Obispo Botanical Garden (SLOBG) is not responsible for 
 		an injury or accident that may occur during my participation as a volunteer in 
@@ -68,9 +72,9 @@ class Profile(models.Model):
 	background_check = models.BooleanField(null=True)
 	harassment_training = models.BooleanField(null=True)
 	first_aid_cpr = models.BooleanField(null=True)
-	emergency_contact = models.TextField(max_length=100, blank=True)
+	emergency_contact = models.TextField(max_length=100, blank=True, default="")
 	emergency_contact_relationship = models.TextField(max_length=100, blank=True)
-	emergency_contact_phone_number = models.TextField(max_length=100, blank=True)
+	emergency_contact_phone_number = models.TextField(max_length=100, blank=True, default="")
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):

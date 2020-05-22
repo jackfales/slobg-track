@@ -33,7 +33,7 @@ SERVER_EMAIL = 'no-reply@Hack4Impact.com'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'h4icptest@gmail.com'
+EMAIL_HOST_USER = 'track4Impact@gmail.com'
 # EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_HOST_PASSWORD = 'ozgxustbnyimabnq'
 EMAIL_PORT = 587
@@ -143,11 +143,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'landing'
 
-# DJANGO-HEROKU:
-#import django_heroku
-#django_heroku.settings(locals())
+# # DJANGO-HEROKU:
+# import django_heroku
+# django_heroku.settings(locals())
 
-# Heroku: Update database configuration from $DATABASE_URL.
+# # Heroku: Update database configuration from $DATABASE_URL.
 # import dj_database_url
 # db_from_env = dj_database_url.config(conn_max_age=500)
 # DATABASES['default'].update(db_from_env)
